@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivia Eckstine</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      overflow: hidden;
+    }
+
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 100;
+      transition: opacity 1.2s ease;
+    }
+
+    #loading-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* skip button */
+    #skip-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 40px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    #skip-btn:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+
+  <div id="loading-screen"></div>
+  <button id="skip-btn">Skip →</button>
+
+  <script>
+    let particles = [];
+    let font;
+
+    new p5(function(p) {
+
+      p.preload = function() {
+        font = p.loadFont('PixelifySans-Medium.ttf');
+      };
+
+      p.setup = function() {
+        let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+        canvas.parent('loading-screen');
+        sampleText();
+      };
+
+      function sampleText() {
+        let pg = p.createGraphics(p.width, p.height);
+        pg.pixelDensity(1);
+        pg.background(0);
+        pg.fill(255);
+        pg.textFont(font);
+        pg.textSize(490);
+        pg.textAlign(p.CENTER, p.CENTER);
+        pg.text('OLIVIA ECKSTINE', p.width / 2, p.height / 2);
+        pg.loadPixels();
+        let spacing = 6;
+        for (let x = 0; x < p.width; x += spacing) {
+          for (let y = 0; y < p.height; y += spacing) {
+            let index = (x + y * p.width) * 4;
+            if (pg.pixels[index] > 128) {
+              particles.push(new Particle(x, y, p));
+            }
+          }
+        }
+        pg.remove();
+      }
+
+      p.draw = function() {
+        p.background(0);
+        for (let part of particles) {
+          part.update();
+          part.draw();
+        }
+      };
+
+      p.windowResized = function() {
+        p.resizeCanvas(p.windowWidth, p.windowHeight);
+        particles = [];
+        sampleText();
+      };
+    });
+
+    class Particle {
+      constructor(x, y, p) {
+        this.p = p;
+        this.home = p.createVector(x, y);
+        this.pos = p.createVector(p.random(p.width), p.random(p.height));
+        this.vel = p.createVector(0, 0);
+        this.acc = p.createVector(0, 0);
+        this.size = p.random(2, 4);
+        this.scatterRadius = 120;
+        this.scatterStrength = 8;
+        this.springStrength = 0.06;
+        this.damping = 0.85;
+      }
+      update() {
+        let p = this.p;
+        let mouse = p.createVector(p.mouseX, p.mouseY);
+        let distToMouse = p5.Vector.dist(this.pos, mouse);
+        if (distToMouse < this.scatterRadius) {
+          let flee = p5.Vector.sub(this.pos, mouse);
+          flee.normalize();
+          flee.mult(p.map(distToMouse, 0, this.scatterRadius, this.scatterStrength, 0));
+          this.acc.add(flee);
+        } else {
+          let toHome = p5.Vector.sub(this.home, this.pos);
+          toHome.mult(this.springStrength);
+          this.acc.add(toHome);
+        }
+        this.vel.add(this.acc);
+        this.vel.mult(this.damping);
+        this.pos.add(this.vel);
+        this.acc.mult(0);
+      }
+      draw() {
+        let p = this.p;
+        let d = p5.Vector.dist(this.pos, p.createVector(p.mouseX, p.mouseY));
+        p.fill(255, 255, 255, p.map(d, 0, 120, 180, 255));
+        p.noStroke();
+        p.ellipse(this.pos.x, this.pos.y, this.size);
+      }
+    }
+
+    function dismiss() {
+      const screen = document.getElementById('loading-screen');
+      const btn = document.getElementById('skip-btn');
+      screen.classList.add('fade-out');
+      btn.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 1300);
+    }
+
+    setTimeout(dismiss, 4000);
+    document.getElementById('skip-btn').addEventListener('click', dismiss);
+  </script>
+
+</body>
+</html>

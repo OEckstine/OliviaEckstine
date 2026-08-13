@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivia Eckstine</title>
+  <link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></head>
+
+<body>
+ 
+    <div class="project-wrap">
+
+        <a href="home.html" class="hero-name-link">
+            <div class="project-name">OLIVIA ECKSTINE.</div>
+        </a>
+        <div class="project-title">UNCOLLECTED</div>
+    
+        <div class="tag-row">
+        <span class="tag">XR</span>
+        <span class="tag">Javascript</span>
+        <span class="tag">Projection Mapping</span>
+        </div>
+    
+        <div class="project-hero-img placeholder">
+            <img src="uncollected1.png" alt="Uncollected installation"> 
+        </div>
+    
+        <p class="project-desc">
+        Uncollected is an interactive installation that responds to the visitor's presence without collecting any data from them. In a darkened room surrounded by figurative paintings, a depth sensor reads your silhouette in real time while a ceiling projector casts painterly light onto the walls and your body — dissolving the boundary between viewer and painting. The work is a direct critique of how women's health data is commodified by period apps, wearables, and trackers. Where surveillance extracts, this installation returns — offering the experience of being seen without being reduced. The room simply responds to your presence. Nothing is recorded, nothing is sold.
+        </p>
+    
+        <div class="section-label">Technical Setup</div>
+        <div class="technical-grid">
+        <p class="technical-text">
+            Built in p5.js with ml5's MoveNet body-tracking model for real-time pose detection. Particle systems were rendered across three separate quad surfaces using MadMapper, calibrated to align the projected output with each painted panel. A webcam reads the visitor's skeleton keypoints live, spawning particles along the body's outline that drift, fade, and die — creating a shimmering effect that follows movement.
+        </p>
+
+        <div class="technical-img placeholder">
+            <img src="setup1.jpeg" alt="Technical setup"> 
+        </div>
+
+        </div>
+    
+        <!-- context -->
+        <div class="section-label">Context</div>
+        <p class="context-text">
+        Uncollected was created as the final project for my Lab course at Parsons School of Design, Spring 2025 — a semester-long studio focused on physical computing and interactive installation. The work was presented during the end-of-year D&T showcase and received strong engagement from both peers and faculty during critique.
+        </p>
+    
+        <!-- response -->
+        <div class="section-label">Reception</div>
+        <div class="response-grid">
+            <div class="response-img">
+                <video autoplay muted loop playsinline>
+                    <source src="uncollected2.mp4" type="video/mp4">
+                </video>
+            </div>
+        <p class="response-text">
+            The installation resonated deeply with visitors, many of whom expressed a strong emotional connection to the subject matter. The intersection of women's health and surveillance technology struck a chord — the concept felt both personal and widely recognized, sparking conversations during and after the critique about how normalized data extraction from the female body has become. Faculty and peers noted it as a compelling examination of the relationship between health, technology, and bodily autonomy.<br><br>
+            The critique also pushed the concept further, raising questions about selectively mapping particles to specific body parts rather than the full silhouette — a direction that would create a more fragmented, pointed commentary on how women's bodies are parsed in both medical and surveillance contexts. It's something I'd want to explore in a future iteration.
+        </p>
+        </div>
+    
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <span>New York, NY</span>
+        <nav>
+        <a href="about.html">About</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+    
+    </body>
+    </html>

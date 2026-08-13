@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivia Eckstine</title>
+  <link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></head>
+
+<body>
+ 
+    <div class="project-wrap">
+
+        <a href="home.html" class="hero-name-link">
+            <div class="project-name">OLIVIA ECKSTINE.</div>
+        </a>
+        <div class="project-title">PERIMETER</div>
+
+        <div class="tag-row">
+        <span class="tag">Arduino</span>
+        <span class="tag">C++</span>
+        <span class="tag">Wearable Tech</span>
+        </div>
+    
+        <div class="response-grid">
+            <div class="project-hero-img placeholder">
+                <img src="Perimeter.png" alt="Perimeter Wearable"> 
+            </div>
+        <p class="response-text">
+            Perimeter is a wearable sculpture embedded with ultrasonic sensors that detect proximity in real time, triggering LED light patterns as people or objects draw near. The technology is intentionally left exposed sensors on the surface, wiring visible, salvaged circuit boards worn as ornamentation because the material is the meaning. The piece frames the body without enclosing it, suggesting protection without claiming to offer it. It borrows the logic of defense technology and places it on the body, where it becomes something more personal: the instinct to know when something is coming, to have your edges acknowledged, made suddenly wearable.
+        </p>
+        </div>
+    
+        <div class="section-label">Technical Setup</div>
+        <div class="technical-grid">
+        <p class="technical-text">
+            Perimeter is built on an Arduino Uno, which reads input from two HC-SR04 ultrasonic sensors mounted on the left and right sides of the garment. Each sensor continuously measures the distance of nearby objects; when something enters a set proximity threshold, the Arduino triggers a NeoPixel ring, activating a light response in real time. The two sensors operate independently, meaning the light can respond asymmetrically depending on which side detects movement first.
+The code runs a continuous loop in Arduino IDE (written in C++) that polls both sensors, maps the distance readings to LED brightness and pattern behavior, and updates the NeoPixel ring accordingly. The closer the proximity, the more activated the light response becomes.
+For construction, the NeoPixel ring and sensors are secured to the fabric base using a combination of hot glue and hand-sewing — hot glue to anchor components in place, and stitching to reinforce attachment points that bear tension or movement. Wiring is routed along the surface of the garment rather than hidden, and salvaged circuit boards and electronic components are hand-sewn on as decorative elements. The Arduino and power source are integrated into the structure of the piece, worn on the body.
+        </p>
+
+        <div class="technical-img placeholder">
+            <img src="progress.jpeg" alt="Technical setup"> 
+        </div>
+
+        </div>
+
+        <!-- context -->
+        <div class="section-label">Context</div>
+        <p class="context-text">
+            Perimeter was created for Space and Material, a studio course at Parsons School of Design focused on exploring the relationship between sculpture and the body. The assignment asked students to investigate how physical materials, form, and space interact with and around the human figure. I used this as an opportunity to push into wearable and interactive territory asking what it means when a sculptural object doesn't just sit on the body but responds to the space the body occupies. The result is a piece that lives somewhere between garment, sculpture, and sensor system, using the body as both its structure and its subject.
+        </p>
+    
+        <!-- response -->
+        <div class="response-grid">
+            <div class="project-hero-img placeholder">
+                <img src="zoom.jpeg" alt="Perimeter Wearable"> 
+            </div>
+        <p class="response-text">
+            Perimeter 
+        </p>
+        </div>
+    
+    </div>
+    
+    <footer>
+        <span>New York, NY</span>
+        <nav>
+        <a href="about.html">About</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+    
+    </body>
+    </html>
